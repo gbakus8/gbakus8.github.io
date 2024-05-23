@@ -1,21 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        .thumbnail {
+            max-width: 200px;
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <a href="home.html">Go to Home</a>
-    <img id="ban" src="ban.png" />
-    <div id="overlay" onclick="hideOverlay()">
-        <button id="prevImage" onclick="changeImage(-1)">Previous</button>
-        <img id="overlayImage" src="" />
-        <button id="nextImage" onclick="changeImage(1)">Next</button>
+    <h1>Gallery</h1>
+    <div id="thumbnails">
+        <!-- Thumbnails will be inserted here -->
     </div>
-    <div id="gallery">
-        <table id="imageTable"></table>
-        <button id="prevPage" onclick="changePage(-1)">Previous</button>
-        <button id="nextPage" onclick="changePage(1)">Next</button>
-    </div>
-    <script src="index.js"></script>
+    <script>
+        // JavaScript to handle thumbnail clicks
+        function showImage(filename) {
+            window.location.href = "image.html#" + encodeURIComponent(filename);
+        }
+
+        fetch('img')
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const thumbnailsDiv = document.getElementById('thumbnails');
+                const images = doc.querySelectorAll('img');
+                images.forEach(img => {
+                    img.classList.add('thumbnail');
+                    img.addEventListener('click', () => {
+                        showImage(img.dataset.filename);
+                    });
+                    thumbnailsDiv.appendChild(img);
+                });
+            });
+    </script>
 </body>
 </html>
