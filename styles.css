@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.banner {
+    text-align: center;
+}
+
+.banner img {
+    max-width: 100%;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.thumbnail {
+    margin: 10px;
+}
+
+.thumbnail img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.photo-viewer {
+    text-align: center;
+}
+
+.photo-viewer img {
+    max-width: 100%;
+    max-height: 80vh;
+}
+
+.navigation-buttons {
+    margin-top: 20px;
+}
+
+.navigation-buttons button {
+    margin: 0 10px;
+}
