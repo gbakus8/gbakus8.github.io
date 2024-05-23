@@ -1,1 +1,21 @@
-test
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <a href="home.html">Go to Home</a>
+    <img id="ban" src="ban.png" />
+    <div id="overlay" onclick="hideOverlay()">
+        <button id="prevImage" onclick="changeImage(-1)">Previous</button>
+        <img id="overlayImage" src="" />
+        <button id="nextImage" onclick="changeImage(1)">Next</button>
+    </div>
+    <div id="gallery">
+        <table id="imageTable"></table>
+        <button id="prevPage" onclick="changePage(-1)">Previous</button>
+        <button id="nextPage" onclick="changePage(1)">Next</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
